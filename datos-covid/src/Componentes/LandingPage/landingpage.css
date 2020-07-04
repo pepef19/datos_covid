@@ -1,0 +1,24 @@
+.fetch {
+    display: inline-block;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    margin-top: 150px;
+    margin-right: 50px;
+    padding: 10px;
+    text-align: center;
+    align-content: center;
+    min-width: 250px;
+    position: relative;
+}
+
+.image-component {
+    text-align: end;
+}
+
+.navbar-styles {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
