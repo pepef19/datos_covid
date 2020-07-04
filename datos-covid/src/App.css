@@ -4,7 +4,6 @@
 
 .App {
   text-align: center;
-  background-image: url("./Componentes/LandingPage/images/landing.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -14,3 +13,5 @@
 .country-flag {
   width: 60px;
 }
+
+

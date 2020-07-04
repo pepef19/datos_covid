@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {LandingPage} from "./Componentes/LandingPage/landingpage";
 import {Test} from "./Componentes/test";
+import MapChart from "./Components/MapChart";
 
 function App() {
 
@@ -22,9 +23,6 @@ function App() {
             })
             .catch(error => console.log(error));
     }, []);
-
-
-
 
     const [data, setData] = useState({
         "report": {
@@ -74,6 +72,7 @@ function App() {
                     <Route exact path="/" render={() => <LandingPage listOfCountries={listOfCountries} data={data} country={country} setCountry={setCountry}/>}/>
                     <Route exact path="/test" render={props => <Test {...props}/>}/>
                 </Switch>
+                <MapChart />
             </header>
         </Router>
     </div>
