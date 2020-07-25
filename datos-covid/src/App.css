@@ -14,4 +14,10 @@
   width: 60px;
 }
 
+.landing-page {
+  position: absolute;
+}
 
+.mapa {
+  position: relative;
+}

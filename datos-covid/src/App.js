@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {LandingPage} from "./Componentes/LandingPage/landingpage";
-import {Test} from "./Componentes/test";
-import MapChart from "./Components/MapChart";
+import MapChart from "./Componentes/MapChart/MapChart";
 
 function App() {
 
@@ -68,11 +67,14 @@ function App() {
     <div className="App">
         <Router>
             <header className="App-header">
-                <Switch>
-                    <Route exact path="/" render={() => <LandingPage listOfCountries={listOfCountries} data={data} country={country} setCountry={setCountry}/>}/>
-                    <Route exact path="/test" render={props => <Test {...props}/>}/>
-                </Switch>
-                <MapChart />
+                <div className="landing-page">
+                    <Switch>
+                        <Route exact path="/" render={() => <LandingPage listOfCountries={listOfCountries} data={data} country={country} setCountry={setCountry}/>}/>
+                    </Switch>
+                </div>
+                <div className="mapa">
+                    <MapChart />
+                </div>
             </header>
         </Router>
     </div>
