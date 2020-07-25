@@ -20,4 +20,14 @@
 
 .mapa {
   position: relative;
+  margin-top: -225px;
+}
+
+.seriesData {
+  float: left;
+
+}
+
+.country-info-div{
+  display: inline-block;
 }

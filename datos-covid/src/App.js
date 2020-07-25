@@ -3,13 +3,14 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {LandingPage} from "./Componentes/LandingPage/landingpage";
 import MapChart from "./Componentes/MapChart/MapChart";
+import Navbar from "./Componentes/Navigation/nav.view";
 
 function App() {
 
     const [listOfCountries, setListOfCountries ] = useState([]);
 
     useEffect(() => {
-        fetch(`https://covid19api.io/api/v1/CountriesWhereCoronavirusHasSpread`, options)
+        fetch(`http://localhost:5000/country/country_codes`, options)
             .then(response => {
                 if(response.status === 200) {
                     return response.json();
@@ -18,7 +19,7 @@ function App() {
             })
             .then(data => {
                 console.log(data);
-                setListOfCountries(data.table);
+                setListOfCountries(data)
             })
             .catch(error => console.log(error));
     }, []);
@@ -41,7 +42,7 @@ function App() {
         }
     });
 
-    const [country, setCountry] = useState('Spain');
+    const [country, setCountry] = useState('AFG');
 
     const options = {
         headers: new Headers(),
@@ -49,7 +50,7 @@ function App() {
     }
 
     useEffect(() => {
-        fetch(`https://covid19api.io/api/v1/ReportsByCountries/${country}`, options)
+        fetch(`http://localhost:5000/country/${country}`, options)
             .then(response => {
                 if(response.status === 200) {
                     return response.json();
@@ -63,15 +64,31 @@ function App() {
             .catch(error => console.log(error));
     }, [country]);
 
+    const [ seriesData, setSeriesData ] = useState([""]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/series/country/${country}`, options)
+            .then(response => {
+                if(response.status === 200) {
+                    return response.json();
+                }
+                return Promise.reject(response.status);
+            })
+            .then(data => {
+                console.log(data);
+                setSeriesData(data);
+            })
+            .catch(error => console.log(error));
+    }, [country]);
+
   return (
     <div className="App">
         <Router>
             <header className="App-header">
-                <div className="landing-page">
-                    <Switch>
-                        <Route exact path="/" render={() => <LandingPage listOfCountries={listOfCountries} data={data} country={country} setCountry={setCountry}/>}/>
-                    </Switch>
+                <div className="navbar-styles">
+                    <Navbar listOfCountries={listOfCountries} country={country} setCountry={setCountry}/>
                 </div>
+                <LandingPage seriesData={seriesData} listOfCountries={listOfCountries} data={data} country={country} setCountry={setCountry}/>
                 <div className="mapa">
                     <MapChart />
                 </div>

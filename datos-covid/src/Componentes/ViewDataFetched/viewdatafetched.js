@@ -4,11 +4,9 @@ import '../../App.css';
 const ViewDataFetched = ({data}) => {
 console.log(data)
     return (
-            <div>
-                <img src={data.report.flag} className="country-flag" alt="logo" />
-                    <p>País: {data.report.country}</p>
-                    <p>Casos: {data.report.cases}</p>
-                    <p>Muertes: {data.report.deaths}</p>
+            <div className="country-info-div">
+                    <p>Country code: {data.country_code}</p>
+                    <p>Continente: {data.continent}</p>
             </div>
     );
 };

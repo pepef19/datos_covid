@@ -13,9 +13,21 @@
     position: relative;
     z-index: 9;
 }
+.fetch2 {
+    margin-top: 150px;
+    background-color: transparent;
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    align-content: center;
+    width: 50%;
+    z-index: 9;
+}
 
 .image-component {
     text-align: end;
+    display: flex;
 }
 
 .navbar-styles {
